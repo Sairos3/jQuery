@@ -1,4 +1,11 @@
+var language = ["HTML", "CSS", "JavaScript", "PHP", "Java", "Python",
+"C", "C++", "C#", "Perl", "Ruby", "Scala", "COBOL", "Basic",
+"Fortran", "Lisp", "TypeScript"] 
+
 $("document").ready(function() {
+$("#input").autocomplete({
+    source: language
+},{})
     $("#date").datepicker({
         showOtherMonths: true,
         selectOtherMonths: true,
