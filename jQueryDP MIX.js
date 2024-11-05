@@ -1,11 +1,13 @@
-var language = ["HTML", "CSS", "JavaScript", "PHP", "Java", "Python",
-"C", "C++", "C#", "Perl", "Ruby", "Scala", "COBOL", "Basic",
-"Fortran", "Lisp", "TypeScript"] 
-
 $("document").ready(function() {
 $("#input").autocomplete({
-    source: language
-},{})
+    source: ["HTML", "CSS", "JavaScript", "PHP", "Java", "Python",
+    "C", "C++", "C#", "Perl", "Ruby", "Scala", "COBOL", "Basic",
+    "Fortran", "Lisp", "TypeScript"] 
+},{
+    delay:500,
+    minLenght: 1,
+    autoFocus: true
+})
     $("#date").datepicker({
         showOtherMonths: true,
         selectOtherMonths: true,
@@ -37,6 +39,17 @@ $("#input").autocomplete({
         $("#dialog").dialog("open")   
     });
 
+    $("#btn2").click(function () { 
+        //alert("GET is working")
+        var modal = $("#dialog2").dialog("option", "height")
+        alert(modal)
+    });
+
+    $("#btn3").click(function () { 
+        //alert("SET is working") 
+        $("#dialog2").dialog("option", "height", 300)   
+    });
+
     $("#dialog").dialog({
         title:"Title using property",
         position: { my: "right top", at: "right top", of: window },
@@ -45,5 +58,24 @@ $("#input").autocomplete({
         resizable: true,
         closeOnEscape: true,
         modal: true
+    })
+    $("#dialog2").dialog({
+        draggable: true,
+        position: { my: "right", at: "right", of: window },
+        resizable: true,
+        closeOnEscape: true,
+        modal: false,
+        autoOpen: true,
+        height: 250,
+        width: 250
+    });
+    $(".box").draggable({
+        //axis: "x",
+        cursor: "grabbing",
+        opacity: "0.5",
+        //containment: "parent",
+        //grid: [300, 300]
+        snap: true,
+        snapTolerance: 100
     })
 });
