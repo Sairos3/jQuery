@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="JQuery-UI/jquery-ui.structure.css">
     <link rel="stylesheet" href="JQuery-UI/jquery-ui.theme.css">
     <style>
+        .ui-menu .ui-menu-item .ui-state-active {
+            background-color: red;
+            color: white;
+        }
+
         #div1, #div2 {
             height: 300px;
             width: 300px;
@@ -30,12 +35,27 @@
         h1 {
             text-align: center;
         }
+
+        .box{
+            border: 5px solid black;
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <h1>Date Picker and Accordion in Separate Windows</h1>
     Favorite Language: <input type="text" id="input">
     <button id="btn1">Dialog Box</button>
+
+    <div class="box">
+        Drag Me!
+    </div>
+    <div class="box">
+        Drag Me2!
+    </div>
 
     <div id="div1">
         <h2>Select a Date</h2>
@@ -60,6 +80,13 @@
             <p>JQuery was introduced in 2006. JQuery is an open-source, fast, tiny, and feature-rich library.</p>
         </div>
     </div>
+
+    <div id="dialog2" title="Title 1">
+        This is customizable dialog box
+    </div>
+    
+    <button id="btn2">GET</button>
+    <button id="btn3">SET</button>
 
     <div id="dialog" title="Title using attribute">
         This is a Customizable dialog box, Close this.
