@@ -40,14 +40,14 @@ $("#input").autocomplete({
     });
 
     $("#btn2").click(function () { 
-        //alert("GET is working")
-        var modal = $("#dialog2").dialog("option", "height")
-        alert(modal)
+        console.log("GET button clicked");
+        var modal = $("#dialog2").dialog("option", "height");
+        alert(modal);
     });
 
     $("#btn3").click(function () { 
-        //alert("SET is working") 
-        $("#dialog2").dialog("option", "height", 300)   
+        console.log("SET button clicked");
+        $("#dialog2").dialog("option", "height", 300);
     });
 
     $("#dialog").dialog({
@@ -78,4 +78,21 @@ $("#input").autocomplete({
         snap: true,
         snapTolerance: 100
     })
+    $(".sort").sortable({
+        opacity: 0.5,
+        cursor: "grabbing",
+        containment: "parent",
+        delay: 300,
+        distance: 50
+    })
+    $("#cat1").resizable({
+        //animate: true,
+        //containment: "parent",
+        maxHeight: 400,
+        maxWidth: 400,
+        minHeight: 150,
+        minWidth: 150,
+        ghost: true
+    }
+    )
 });
