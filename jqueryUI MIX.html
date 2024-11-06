@@ -14,17 +14,32 @@
             background-color: red;
             color: white;
         }
+        #div1 {
+            z-index: 50;
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
+        #div2 {
+            z-index: 5;
+            position: absolute;
+            top: 450px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
         #div1, #div2 {
             height: 300px;
             width: 300px;
             border: 3px black solid;
             border-radius: 25px;
-            position: relative;
-            margin: 20px auto;
+            position: absolute;
+            transform: translateX(-50%);
+            margin: 0;
             padding: 10px;
             overflow: hidden;
-        }
+}
 
         #date {
             width: 100%;
@@ -43,13 +58,41 @@
             margin: 10px;
             text-align: center;
         }
+
+        #sortable{
+            border: 2px solid black;
+            height: 20px;
+            width: 100px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        #cat1{
+            height: 250px;
+            width: 250px;
+            border: 1px solid black;
+        }
     </style>
 </head>
 <body>
     <h1>Date Picker and Accordion in Separate Windows</h1>
     Favorite Language: <input type="text" id="input">
     <button id="btn1">Dialog Box</button>
+    <button id="btn2">GET</button>
+    <button id="btn3">SET</button>
 
+    <div>
+        <img src="cat.jpg" id="cat1" alt="cat">
+    </div>
+    <div>
+        <ul class="sort">
+            <li id="sortable">Item1</li>
+            <li id="sortable">Item2</li>
+            <li id="sortable">Item3</li>
+            <li id="sortable">Item4</li>
+            <li id="sortable">Item5</li>
+        </ul>
+    </div>
     <div class="box">
         Drag Me!
     </div>
@@ -84,9 +127,6 @@
     <div id="dialog2" title="Title 1">
         This is customizable dialog box
     </div>
-    
-    <button id="btn2">GET</button>
-    <button id="btn3">SET</button>
 
     <div id="dialog" title="Title using attribute">
         This is a Customizable dialog box, Close this.
