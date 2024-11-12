@@ -2,7 +2,7 @@ $("document").ready(function() {
 $("#input").autocomplete({
     source: ["HTML", "CSS", "JavaScript", "PHP", "Java", "Python",
     "C", "C++", "C#", "Perl", "Ruby", "Scala", "COBOL", "Basic",
-    "Fortran", "Lisp", "TypeScript"] 
+    "Fortran", "Lisp", "TypeScript"]
 },{
     delay:500,
     minLenght: 1,
