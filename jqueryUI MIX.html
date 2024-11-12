@@ -4,157 +4,210 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Responsive Document</title>
 
+    <!-- Add the required CSS files -->
     <link rel="stylesheet" href="JQuery-UI/jquery-ui-dark/jquery-ui.css">
     <link rel="stylesheet" href="JQuery-UI/jquery-ui-dark/jquery-ui.structure.css">
     <link rel="stylesheet" href="JQuery-UI/jquery-ui-dark/jquery-ui.theme.css">
     <link rel="stylesheet" href="todo.css">
+
     <style>
-        .ui-menu .ui-menu-item .ui-state-active {
-            background-color: red;
-            color: white;
-        }
-        #div1 {
-            z-index: 50;
-            position: absolute;
-            top: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        #div2 {
-            z-index: 5;
-            position: absolute;
-            top: 450px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        #div1, #div2 {
-            height: 300px;
-            width: 300px;
-            border: 3px black solid;
-            border-radius: 25px;
-            position: absolute;
-            transform: translateX(-50%);
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 10px;
-            overflow: hidden;
-}
+            padding: 0;
+        }
 
-        #date {
+        /* Ensure autocomplete menu visibility in dark themes */
+        .ui-autocomplete {
+            background-color: #333 !important;
+            color: #fff !important;
+            border: 1px solid #444 !important;
+        }
+
+        /* Highlighted autocomplete item */
+        .ui-menu .ui-menu-item .ui-state-active,
+        .ui-menu-item-wrapper:hover {
+            background-color: #ff0000 ;
+            color: #fff ;
+        }
+
+        /* Input and UI elements */
+        #input, #date {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             box-sizing: border-box;
         }
 
-        h1 {
+        /* Centered headings */
+        h1, h2 {
             text-align: center;
         }
 
-        .box{
+        /* Basic layout for draggable boxes */
+        .box {
             border: 5px solid black;
             height: 100px;
             width: 100px;
             margin: 10px;
             text-align: center;
+            display: inline-block;
         }
 
-        #sortable{
-            border: 2px solid black;
-            height: 20px;
-            width: 100px;
-            margin: 10px;
+        /* Container styling */
+        .container {
+            max-width: 90%;
+            margin: 0 auto;
+            border: 3px black solid;
+            border-radius: 25px;
+            padding: 15px;
+            overflow: hidden;
+            box-sizing: border-box;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+
+        /* Resizable image */
+        #cat1 {
+            width: 400px;
+            max-width: 400px;
+            height: auto;
+            border: 1px solid black;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            right: 0;
+            top: 25%;
+            margin-top: 0px;
+        }
+
+
+        /* Accordion and date picker divs */
+        #div1, #div2 {
+            margin: 20px auto;
+            padding: 15px;
+            border: 3px solid black;
+            border-radius: 10px;
+            max-width: 90%;
+            box-sizing: border-box;
+            position: relative;
             text-align: center;
         }
 
-        #cat1{
-            height: 250px;
-            width: 250px;
+        /* Sortable list */
+        .sort li {
             border: 1px solid black;
-        }
-        .container {
-            height: 300px;
-            width: 300px;
-            border: 3px black solid;
-            border-radius: 25px;
-            position: absolute;
-            transform: translateX(400%);
-            margin: 0;
+            margin: 5px;
             padding: 10px;
-            overflow: hidden;
+            list-style-type: none;
+            background-color: #f1f1f1;
         }
 
+        /* Dialog boxes */
+        #dialog, #dialog2 {
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container, #div1, #div2 {
+                width: 95%;
+            }
+            .box {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container, #div1, #div2 {
+                width: 100%;
+                padding: 10px;
+            }
+            .box {
+                width: 70px;
+                height: 70px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>Date Picker and Accordion in Separate Windows</h1>
-    Favorite Language: <input type="text" id="input">
+    <h1>Date Picker and Accordion in Separate Windows</h1><hr>
+    <label for="input">Favorite Language:</label>
+    <input type="text" id="input">
     <button id="btn1">Dialog Box</button>
     <button id="btn2">GET</button>
     <button id="btn3">SET</button>
 
+    <!-- Main Container for To-Do List -->
     <div class="container">
         <h2>To-Do List using jQuery</h2>
-        <p><b><i>Double click to delete an item and Drag to reorder</i></b></p>
+        <p><b><i>Double-click to delete an item and drag to reorder</i></b></p>
         <form name="toDoList">
             <input type="text" name="ListItem">
         </form>
         <div id="button">Add</div>
-        <br>
     </div>
 
+    <!-- Resizable Image -->
     <div>
         <img src="cat.jpg" id="cat1" alt="cat">
     </div>
+
+    <!-- Sortable Items List -->
     <div>
         <ul class="sort">
-            <li id="sortable">Item1</li>
-            <li id="sortable">Item2</li>
-            <li id="sortable">Item3</li>
-            <li id="sortable">Item4</li>
-            <li id="sortable">Item5</li>
+            <li>Item1</li>
+            <li>Item2</li>
+            <li>Item3</li>
+            <li>Item4</li>
+            <li>Item5</li>
         </ul>
     </div>
-    <div class="box">
-        Drag Me!
-    </div>
-    <div class="box">
-        Drag Me2!
-    </div>
 
+    <!-- Draggable Boxes -->
+    <div class="box">Drag Me!</div>
+    <div class="box">Drag Me2!</div>
+
+    <!-- Date Picker in div1 -->
     <div id="div1">
         <h2>Select a Date</h2>
         <input type="text" id="date">
     </div>
 
+    <!-- Accordion in div2 -->
     <div id="div2">
         <h2>HTML</h2>
         <div>
-            <p>HTML stands for Hypertext Markup Language. It is used to structure a web page and its content.</p>
+            <p>HTML stands for Hypertext Markup Language. It structures a web page and its content.</p>
         </div>
         <h2>CSS</h2>
         <div>
             <p>CSS stands for Cascading Style Sheets. It is used to style a web page in different ways.</p>
         </div>
-        <h2>Javascript</h2>
+        <h2>JavaScript</h2>
         <div>
-            <p>Javascript was introduced in the year 1995. It is used to add functionality.</p>
+            <p>JavaScript was introduced in 1995. It adds functionality to web pages.</p>
         </div>
-        <h2>JQuery</h2>
+        <h2>jQuery</h2>
         <div>
-            <p>JQuery was introduced in 2006. JQuery is an open-source, fast, tiny, and feature-rich library.</p>
+            <p>jQuery was introduced in 2006. It's a fast, tiny, and feature-rich library.</p>
         </div>
     </div>
 
+    <!-- Dialogs -->
     <div id="dialog2" title="Title 1">
-        This is customizable dialog box
+        This is a customizable dialog box.
     </div>
 
     <div id="dialog" title="Title using attribute">
-        This is a Customizable dialog box, Close this.
+        This is a customizable dialog box. Close this.
     </div>
 
+    <!-- JavaScript -->
     <script src="JQuery-UI/external/jquery/jquery.js" type="text/javascript"></script>
     <script src="JQuery-UI/jquery-ui-dark/jquery-ui.js" type="text/javascript"></script>
     <script src="jQueryDP MIX.js" type="text/javascript"></script>
