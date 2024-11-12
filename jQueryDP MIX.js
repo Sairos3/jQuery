@@ -42,12 +42,13 @@ $("#input").autocomplete({
     $("#btn2").click(function () { 
         console.log("GET button clicked");
         var modal = $("#dialog2").dialog("option", "height");
-        alert(modal);
+        alert("Box Is " + modal + "px big");
     });
 
     $("#btn3").click(function () { 
         console.log("SET button clicked");
         $("#dialog2").dialog("option", "height", 300);
+        alert("Box Is " + modal + "px big");
     });
 
     $("#dialog").dialog({
@@ -92,7 +93,8 @@ $("#input").autocomplete({
         maxWidth: 400,
         minHeight: 150,
         minWidth: 150,
-        ghost: true
+        //ghost: true
+        aspectRatio: true //16/9
     }
     )
 });
